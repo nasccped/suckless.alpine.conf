@@ -165,3 +165,25 @@ Have fun!
 
 And now, all that I have to do is run the `startx` command to start
 the Xorg server and have fun with your dwm setup!
+
+Extra
+-----
+
+You'll probably configure the keyboard mapping for using Xorg. The
+keyboard mapping for tty shell and Xorg are differents, so, when
+starting dwm with startx, you basically start a Xorg sessing with
+a default mapping. To change it:
+
+- Install keyboard mapping for Xorg:
+  ```shell
+  doas apk add setxkbmap xkeyboard-config
+  ```
+
+- Add the correct mapping to your .xinitrc:
+
+  ```txt
+  # I personally use brazilian mapping. You can search for your map
+  # at wiki.archlinux.org
+  setxkbmap -layout br -variant abnt2
+  exec dwm
+  ```
