@@ -64,7 +64,7 @@ _(Suckless Alpine Conf - requirements)_.
 Permission Error Issue
 ----------------------
 
-I don't known if it's an OS problem or a virtual machine problem, but
+I don't know if it's an OS problem or a virtual machine problem, but
 when trying to run a startx on the sheel, I get some
 **permission denied** issues, even as wheel/super user. I was
 googling _(AI'ing too)_ about this problem and I found the following
