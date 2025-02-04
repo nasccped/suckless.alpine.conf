@@ -60,3 +60,52 @@ installation _(according to wiki.alpinelinux.org)_.
 Now, we'll get all dependencies to turn our machine into an usable
 xorg desktop. All dependencies can be found at 'SAC-reqs.txt'
 _(Suckless Alpine Conf - requirements)_.
+
+Permission Error Issue
+----------------------
+
+I don't known if it's an OS problem or a virtual machine problem, but
+when trying to run a startx on the sheel, I get some
+**permission denied** issues, even as wheel/super user. I was
+googling _(AI'ing too)_ about this problem and I found the following
+solution:
+
+1. **Add your user to especific groups:**
+   Your user (even if it's super) need to be seted on tty and video
+   groups:
+
+   ```shell
+   doas adduser <YOUR_USERNAME> tty
+   doas adduser <YOUR_USERNAME> video
+   ```
+
+   Then, you can see if the command was successfuly runned by using
+   `grops <YOUR_USERNAME>` command. It will print the groups that
+   your user in.
+
+2. **Set SUID on Xorg:**
+   The Xorg binary needs to have the SUID (Set User ID) bit set to
+   run with elevated privileges:
+
+   ```shell
+   doas chmod u+s /usr/bin/Xorg
+   ```
+
+3. **Using seatd for Seat Management (Optional but recommended):**
+
+   - Install seatd for manage user seat permissions with no root:
+
+     ```shell
+     doas apk add seatd
+     ```
+
+   - Add your user to seat group + start the service:
+
+     ```shell
+     doas adduser <YOUR_USERNAME> seat
+     doas rc-service seatd start
+     doas rc-update add seatd
+     ```
+4. **Reboot:**
+   Now, you can logout/reboot and when back in, your user will have
+   the permissions :^D
