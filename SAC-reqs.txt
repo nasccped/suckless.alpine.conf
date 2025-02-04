@@ -1,0 +1,10 @@
+git
+make
+gcc
+g++
+libx11-dev
+libxft-dev
+libxinerama-dev
+ncurses
+dbus-x11
+alacritty

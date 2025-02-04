@@ -41,3 +41,22 @@ manager:
 doas apk update
 doas apk upgrade --available
 ```
+
+Dependencies
+------------
+
+Before getting all dependencies, you'll need to run the following
+command:
+
+```shell
+doas setup-xorg-base
+```
+
+I don't know exactly what this do, but is required in dwm
+installation _(according to wiki.alpinelinux.org)_.
+
+---
+
+Now, we'll get all dependencies to turn our machine into an usable
+xorg desktop. All dependencies can be found at 'SAC-reqs.txt'
+_(Suckless Alpine Conf - requirements)_.
