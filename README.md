@@ -109,3 +109,59 @@ solution:
 4. **Reboot:**
    Now, you can logout/reboot and when back in, your user will have
    the permissions :^D
+
+Installing
+----------
+
+After getting all dependencies on date + solving permissions errors,
+you can now install dwm + dmenu.
+
+For dwm install:
+
+```shell
+# go to the dwm dir
+cd dwm
+
+# build binaries + install
+doas make clean install
+
+# go back a dir
+cd ..
+```
+
+For dmenu install:
+
+```shell
+# go to the dmenu dir
+cd dmenu
+
+# build binaries + install
+doas make clean install
+
+# go back a dir
+cd ..
+```
+
+TADAH! the dwm + dmenu program is installed on your machine!
+
+Setting the environment
+-----------------------
+
+And now, All you need to do is:
+
+```shell
+# go to the home dir
+cd
+
+# insert the exec line at .xinitrc
+echo "exec dwm" > .xinitrc
+
+# if .xinitrc already exists, I recommend to delet it by using
+# `rm .xinitrc`
+```
+
+Have fun!
+---------
+
+And now, all that I have to do is run the `startx` command to start
+the Xorg server and have fun with your dwm setup!
