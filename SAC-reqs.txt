@@ -8,3 +8,4 @@ libxinerama-dev
 ncurses
 dbus-x11
 alacritty
+bash
