@@ -9,3 +9,6 @@ ncurses
 dbus-x11
 alacritty
 bash
+fontconfig
+nerd-fonts
+font-terminus-nerd
