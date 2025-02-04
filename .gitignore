@@ -1,3 +1,6 @@
 dwm/config.h
 */*.o
 dwm/dwm
+dmenu/config.h
+dmenu/dmenu
+dmenu/stest
