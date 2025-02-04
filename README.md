@@ -169,6 +169,8 @@ the Xorg server and have fun with your dwm setup!
 Extra
 -----
 
+### Keyboard Mapping
+
 You'll probably configure the keyboard mapping for using Xorg. The
 keyboard mapping for tty shell and Xorg are differents, so, when
 starting dwm with startx, you basically start a Xorg sessing with
@@ -187,3 +189,29 @@ a default mapping. To change it:
   setxkbmap -layout br -variant abnt2
   exec dwm
   ```
+
+### Resolution
+
+To set the dwm to a specific resolution, You'll need to:
+
+1. Install the `xrandr` program:
+
+   ```shell
+   doas apk add xrandr
+   ```
+
+2. Change the `.xinitrc` script:
+
+   ```txt
+   xrandr --output Virtual-1 --mode 1920x1080 --rate 60
+   exec dwm
+   ```
+
+   The example above, I'm seting the output called 'Virtual-1' to
+   1920x1080 pixels resolution with 60 fps rate. The name of outputs,
+   pixel reso and the rate can differ from PC to PC. If you're unsure
+   on how to use, open a new Xorg server with 'startx', open the
+   terminal on it and run the `xrandr` command. It will print every
+   available outputs and modes for your computer. Chose the one that
+   best suits your machine and just change the `--output`, `--mode`
+   and `--rate` arguments!
