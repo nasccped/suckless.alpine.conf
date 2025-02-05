@@ -227,3 +227,115 @@ To set the dwm to a specific resolution, You'll need to:
    available outputs and modes for your computer. Chose the one that
    best suits your machine and just change the `--output`, `--mode`
    and `--rate` arguments!
+
+### Default shell
+
+If your Alpine linux is from scratch, it probably came with **ash**
+or **sh** shell. Trust me, it isn't a problem, but, on major linux
+web guides and video tutorials, everything is working on **bash**,
+not **sh**, so, here's how you can switch your default shell for a
+prefered one:
+
+1. Install the shell + chsh command by shadow pack:
+
+  ```shell
+  # get chsh
+  doas apk add shadow
+  # I prefer bash, but this command works for zsh or fish too
+  doas apk add bash
+  ```
+
+2. Change default shell using chsh command:
+
+  ```shell
+  chsh -s /bin/bash
+  ```
+
+3. Reboot your pc:
+
+  ```shell
+  doas reboot
+  ```
+
+4. Log in again and see the changes:
+
+  ```shell
+  echo $SHELL # should outputs '/bin/bash' / the shell of your choice
+  # you can use the following command to
+  # echo $0
+  # it's expected to print '-bash' / the shell of your choice
+  ```
+
+---
+
+But, if it doesn't work, you can try a more manual process:
+
+1. Open the `/etc/passwd` file with a text editor:
+
+  ```shell
+  vi /etc/passwd
+  ```
+
+  You will see something like this:
+
+  ```txt
+  root:x:0:0:root:/root:/bin/<SOME_RANDOM_SHELL>
+  bin:x:1:1:bin:/bin:/sbin/nologin
+  daemon:x:2:2:daemon:/sbin:/sbin/nologin
+  lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+  sync:x:5:0:sync:/sbin:/bin/sync
+  shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+  halt:x:7:0:halt:/sbin:/sbin/halt
+  mail:x:8:12:mail:/var/mail:/sbin/nologin
+  news:x:9:13:news:/usr/lib/news:/sbin/nologin
+  uucp:x:10:14:uucp:/var/spool/uucppublic:/sbin/nologin
+  cron:x:16:16:cron:/var/spool/cron:/sbin/nologin
+  ftp:x:21:21::/var/lib/ftp:/sbin/nologin
+  sshd:x:22:22:sshd:/dev/null:/sbin/nologin
+  games:x:35:35:games:/usr/games:/sbin/nologin
+  ntp:x:123:123:NTP:/var/empty:/sbin/nologin
+  guest:x:405:100:guest:/dev/null:/sbin/nologin
+  nobody:x:65534:65534:nobody:/:/sbin/nologin
+  klogd:x:100:101:klogd:/dev/null:/sbin/nologin
+  <YOUR_USERNAME>:x:1000:1000:<YOUR_USERNAME>:/home/<YOUR_USERNAME>:/bin/<SOME_RANDOM_SHELL>
+  messagebus:x:101:102:messagebus:/dev/null:/sbin/nologin
+  ```
+
+2. Change the `<SOME_RANDOM_SHELL>` + reboot:
+
+  This step is self-explanatory. Just change the places that contains
+  the `<SOME_RANDOM_SHELL>` as in example to the shell of your
+  choice ('bash' in my case), and then, reboot your machine:
+
+  - `/etc/passwd` after changes (for bash):
+
+  ```txt
+  root:x:0:0:root:/root:/bin/bash
+  bin:x:1:1:bin:/bin:/sbin/nologin
+  daemon:x:2:2:daemon:/sbin:/sbin/nologin
+  lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+  sync:x:5:0:sync:/sbin:/bin/sync
+  shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+  halt:x:7:0:halt:/sbin:/sbin/halt
+  mail:x:8:12:mail:/var/mail:/sbin/nologin
+  news:x:9:13:news:/usr/lib/news:/sbin/nologin
+  uucp:x:10:14:uucp:/var/spool/uucppublic:/sbin/nologin
+  cron:x:16:16:cron:/var/spool/cron:/sbin/nologin
+  ftp:x:21:21::/var/lib/ftp:/sbin/nologin
+  sshd:x:22:22:sshd:/dev/null:/sbin/nologin
+  games:x:35:35:games:/usr/games:/sbin/nologin
+  ntp:x:123:123:NTP:/var/empty:/sbin/nologin
+  guest:x:405:100:guest:/dev/null:/sbin/nologin
+  nobody:x:65534:65534:nobody:/:/sbin/nologin
+  klogd:x:100:101:klogd:/dev/null:/sbin/nologin
+  <YOUR_USERNAME>:x:1000:1000:<YOUR_USERNAME>:/home/<YOUR_USERNAME>:/bin/bash
+  messagebus:x:101:102:messagebus:/dev/null:/sbin/nologin
+  ```
+
+  - now, reboot:
+
+  ```shell
+  doas reboot
+  ```
+
+I hope this works :^)
