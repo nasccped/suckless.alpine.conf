@@ -153,11 +153,11 @@ And now, All you need to do is:
 # go to the home dir
 cd
 
-# insert the exec line at .xinitrc
-echo "exec dwm" > .xinitrc
-
 # if .xinitrc already exists, I recommend to delet it by using
 # `rm .xinitrc`
+
+# insert the exec line at .xinitrc
+echo "exec dwm" > .xinitrc
 ```
 
 Have fun!
