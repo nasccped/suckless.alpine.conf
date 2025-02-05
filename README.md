@@ -69,6 +69,8 @@ installed as dependency):
 
 ```shell
 git clone https://github.com/nasccped/suckless.alpine.conf
+# removing .git folder
+rm -rf suckless.alpine.conf/.git
 ```
 
 Permission Error Issue
