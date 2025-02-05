@@ -61,6 +61,16 @@ Now, we'll get all dependencies to turn our machine into an usable
 xorg desktop. All dependencies can be found at 'SAC-reqs.txt'
 _(Suckless Alpine Conf - requirements)_.
 
+Clone
+-----
+
+Clone the repository by using the following command (git already
+installed as dependency):
+
+```shell
+git clone https://github.com/nasccped/suckless.alpine.conf
+```
+
 Permission Error Issue
 ----------------------
 
